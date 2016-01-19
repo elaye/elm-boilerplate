@@ -3,16 +3,23 @@
   "version": "0.0.1",
   "description": "Elm project boilerplate",
   "scripts": {
-    "start": "npm run build-elm && npm run start-server",
-    "build-elm": "elm make src/Main.elm --output dist/example.js",
-    "start-server": "./node_modules/local-web-server/bin/cli.js -s index.html"
+    "start": "npm run webpack-dev",
+    "build": "npm run webpack",
+    "build-elm": "elm make src/Main.elm --output src/app.js",
+    "webpack-dev": "webpack-dev-server --port 8080",
+    "webpack": "webpack"
   },
   "author": "Elie Genard",
   "homepage": "https://github.com/elaye/elm-boilerplate",
   "devDependencies": {
+    "autoprefixer": "^6.3.1",
     "elm-webpack-loader": "^2.0.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "local-web-server": "^1.1.0",
+    "swig": "^1.4.2",
     "webpack": "^1.12.11",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "webpack-merge": "^0.7.3",
+    "writefile": "^0.2.8"
   }
 }
