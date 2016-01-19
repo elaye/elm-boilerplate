@@ -6,13 +6,13 @@ import Signal
 import StartApp
 
 import Update exposing (init, update, actions)
-import View exposing (view)
+import Views.Main exposing (view)
 
 port initialPath : String
 
 app = StartApp.start
     { init = init initialPath
-    --{ init = init "/"
+    --{ init = init "/page/1"
     , update = update
     , view = view
     , inputs = [ actions ]
