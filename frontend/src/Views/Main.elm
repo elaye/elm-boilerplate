@@ -13,6 +13,7 @@ import Util exposing (clickTo)
 
 import Views.Header as Header
 import Views.Footer as Footer
+import Views.About as About
 
 view : Address Action -> Model -> Html
 view _ model = div []
@@ -25,9 +26,10 @@ contentView : Model -> Html
 contentView model = main'
   [ style (TransitStyle.fadeSlideLeft 100 (getTransition model)) ]
 
-  [ text <| case (TransitRouter.getRoute model) of
-      Home -> "This is home"
-      Page _ -> "This is page " ++ toString model.page
-      EmptyRoute -> ""
+  [ case (TransitRouter.getRoute model) of
+      Home -> text "This is home"
+      Page _ -> text <| "This is page " ++ toString model.page
+      About -> About.view
+      EmptyRoute -> text <| ""
   ]
     

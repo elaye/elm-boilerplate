@@ -6,12 +6,14 @@ import RouteParser exposing (..)
 type Route
   = Home
   | Page Int
+  | About
   | EmptyRoute
 
 
 routeParsers : List (Matcher Route)
 routeParsers =
   [ static Home "/"
+  , static About "/about"
   , dyn1 Page "/page/" int ""
   ]
 
@@ -26,5 +28,6 @@ encode : Route -> String
 encode route =
   case route of
     Home -> "/"
+    About -> "/about"
     Page i -> "/page/" ++ toString i
     EmptyRoute -> ""

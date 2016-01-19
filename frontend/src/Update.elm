@@ -55,6 +55,9 @@ mountRoute prevRoute route model =
     Home ->
       (model, Effects.none)
 
+    About ->
+      (model, Effects.none)
+
     Page p ->
       ({ model | page = p }, Effects.none)
 

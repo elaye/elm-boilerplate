@@ -12,7 +12,7 @@ port initialPath : String
 
 app = StartApp.start
     { init = init initialPath
-    --{ init = init "/page/1"
+    --{ init = init "/page/"
     , update = update
     , view = view
     , inputs = [ actions ]
