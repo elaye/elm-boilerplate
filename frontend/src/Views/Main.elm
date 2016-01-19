@@ -29,7 +29,7 @@ contentView model = main'
 
   [ case (TransitRouter.getRoute model) of
       Home -> Home.view
-      Page _ -> text <| "This is page " ++ toString model.page
+      Page _ -> text <| "Page " ++ toString model.page
       About -> About.view
       EmptyRoute -> Home.view
   ]
