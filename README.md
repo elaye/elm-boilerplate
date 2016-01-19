@@ -6,4 +6,4 @@ This is an Elm project boilerplate.
 Documentation
 -------------
 
-[Frontend](https://github.com/elaye/elm-boilerplate/frontend)
+[Frontend](https://github.com/elaye/elm-boilerplate/tree/master/frontend)
