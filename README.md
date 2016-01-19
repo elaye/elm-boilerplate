@@ -1,14 +1,9 @@
 Elm boilerplate
 ===============
 
-Set up the project:
+This is an Elm project boilerplate.
 
-    npm install
+Documentation
+-------------
 
-Start the dev server with hot reloading:
-
-    npm start
-
-Build for production:
-
-    npm build
+[Frontend](https://github.com/elaye/elm-boilerplate/frontend)
