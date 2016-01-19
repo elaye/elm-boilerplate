@@ -1,0 +1,9 @@
+footer {
+  flex-shrink: 1;
+  padding: 15px;
+  background-color: #333;
+}
+
+footer>a {
+  color: #EEE;
+}

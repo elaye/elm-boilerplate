@@ -89,9 +89,9 @@ if ( TARGET_ENV === 'dev' ) {
           test: /\.(css|scss)$/,
           loaders: [
             'style-loader',
-            'css-loader',
-            'postcss-loader',
-            'sass-loader'
+            'css-loader'
+            //'postcss-loader',
+            //'sass-loader'
           ]
         }
       ]

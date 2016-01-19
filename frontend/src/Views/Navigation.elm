@@ -12,7 +12,7 @@ import Routes exposing (..)
 import Util exposing (clickTo)
 
 view : Html
-view = nav [ class "menu" ]
+view = nav []
         [ a (clickTo <| Routes.encode Home) [ text "Home" ]
         , a (clickTo <| Routes.encode (Page 1)) [ text "Page 1" ]
         , a (clickTo <| Routes.encode (Page 2)) [ text "Page 2" ]
