@@ -4,26 +4,50 @@ var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var swig = require('swig');        // templating lib for generating index.html
 var writefile = require('writefile');   // safer Node file writer (creates folders if not existing)
+var path = require('path');
+var devip = require('dev-ip');
 
-console.log( 'WEBPACK GO!');
+
+var ABSOLUTE_BASE = path.normalize(__dirname);
+var constants = Object.freeze({
+  ABSOLUTE_BASE: ABSOLUTE_BASE,
+  NODE_MODULES_DIR: path.join(ABSOLUTE_BASE, 'node_modules'),
+  BUILD_DIR: path.join(ABSOLUTE_BASE, 'build'),
+  DIST_DIR: path.join(ABSOLUTE_BASE, 'dist'),
+  SRC_DIR: path.join(ABSOLUTE_BASE, 'src'),
+  ASSETS_DIR: path.join(ABSOLUTE_BASE, 'static'),
+  HOT_RELOAD_PORT: 8080
+});
+
+function getIp() {
+  var _ip = devip();
+  if (_ip && _ip.length > 0) return _ip[0];
+  return 'localhost';
+}
+
+console.log('Starting Webpack');
 
 // detemine build env
 var TARGET_ENV = process.env.npm_lifecycle_event === 'build' ? 'prod' : 'dev';
 
 // generate HTML for index page (based on desired env)
-var indexTemplate = swig.compileFile('./src/index.html');
-var indexHtml = indexTemplate( { env: TARGET_ENV } );
+var indexTemplate = swig.compileFile(path.join(constants.SRC_DIR, 'index.html'));
+var indexHtml = indexTemplate({env: TARGET_ENV});
 
 // write out index.html to dist/
-writefile( './dist/index.html', indexHtml );
+writefile('./dist/index.html', indexHtml);
 
 // common webpack config
-var commonConfig = {
-  entry: './src/Main.elm',
+var commonConfig = { 
+  hotPort: constants.HOT_RELOAD_PORT,
+  //entry: path.join(constants.SRC_DIR, 'Main.elm'),
+  entry: path.join(constants.SRC_DIR, 'index.js'),
+
 
   output: {
-    path: __dirname + '/dist',
-    filename: 'bundle.js'
+    path: constants.BUILD_DIR,
+    filename: 'bundle.js',
+    publicPath: 'http://' + 'localhost' + ':' + constants.HOT_RELOAD_PORT + '/dist/'
   },
 
   resolve: {
